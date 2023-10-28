@@ -75,42 +75,91 @@ public class Lab3p1_JosueRivera {
                     break;
                 }
                 case 2:{
+                    double syl_vida = 280.0;
+                    double syl_ataq = 80.0;
+                    double syl_def = 15/100;
+                    double gya_vida = 300.0;
+                    double gya_ataq = 50.0;
+                    double gya_def = 10/100;
+                    double gira_vida = 250.0;
+                    double gira_ataq = 70.0;
+                    double gira_def = 25/100;
+                    double drag_vida = 250.0;
+                    double drag_ataq = 75.0;
+                    double drag_def = 20/100;
                     System.out.println("opcion 2");
                     System.out.println("Ingrese el tipo de pelea que desea:");
                     System.out.println("1. hasta la muerte");
                     System.out.println("2. por rondas");
                     int opcion = input.nextInt();
-                    
+                    while (opcion <= 0 || opcion > 2){
+                        System.out.println("error, introduzca otra vez");
+                        opcion = input.nextInt();
+                    }
+                    System.out.println("estadisticas de los pokemones");
+                    System.out.println("Sylveon Vida:280 Ataque:80 Defensa:15&");
+                    System.out.println("Gyarados Vida:300 Ataque:50 Defensa:10%");
+                    System.out.println("Giratina Vida:300 Ataque:70 Defensa:25%");
+                    System.out.println("Dragonite Vida:250 Ataque:75 Defensa:20%");
+                    System.out.println("");
+                    System.out.println("Ingrese una pelea determinada");
+                    System.out.println("1. Sylveon vrs Dragonite");
+                    System.out.println("2. Gyarados vrs Giratina");
+                    System.out.println("3. Dragonite vrs Giratina");
+                    System.out.println("4. Giratina vrs Sylveon");
+                    int pelea = input.nextInt();
+                    while (pelea <= 0 || pelea > 4){
+                        System.out.println("Error, introduzca otra vez");
+                        pelea= input.nextInt();
+                        
+                    }
+                    switch (opcion){
+                        case 1:{
+                            switch (pelea){
+                                case 1:{
+                                    while (syl_vida > 0 || drag_vida > 0){
+                                        syl_vida -= drag_ataq-(drag_ataq*syl_def);
+                                        if (syl_vida < 0){
+                                            syl_vida = 0;
+                                            System.out.println("Dragonite gana");
+                                            break;
+                                        }
+                                        drag_vida -= syl_ataq-(syl_ataq*drag_def);
+                                        if (drag_vida < 0){
+                                            drag_vida = 0;
+                                            System.out.println("Sylveon gana");
+                                            break;
+                                        }
+                                        System.out.println("vida de Sylvion"+syl_vida);
+                                        System.out.println("vida de dragonite"+drag_vida);
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     break;
                 }
                 case 3:{
                     System.out.println("opcion 3");
                     System.out.println("introdusca un numero");
                     int numero = input.nextInt();
-                    int linea = (numero /2)-1;
+                    int g = (numero/2)+1;
                     for (int contador = 1; contador <= numero; contador++){
-                        if (contador == 1 || contador == numero){
-                            for (int contador2 = 1; contador2 < numero;contador2++){
+                        for(int contador2 = 1; contador2 <= numero;contador2++){
+                            if (contador==1||contador==numero){
                                 System.out.print("*");
-                            }
-                        }
-                        else{
-                            for(int contador3 = 1;contador3 <= numero;contador3++){
-                                if (contador3 == linea){
-                                    System.out.print("|");
-                                }
-                                if (contador3 == 1||contador3 == numero-1){
-                                    System.out.print("*");
-                                }
-                                else {
-                                    System.out.print(" ");
-                                }
-                                
+                            }else if (contador2 ==1||contador2 ==numero){
+                                System.out.print("*");
+                            }else if(contador2 == g){
+                                System.out.print("|");
+                            }else if (contador2 + contador == numero +1){
+                                System.out.print("<");
+                            }else{
+                                System.out.print(" ");
                             }
                         }
                         System.out.println(" ");
-                       
-                    
                     }
                 }
              System.out.println("1. ejercicio(sucesiones y mas sucesiones!)");
